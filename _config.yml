@@ -1,0 +1,11 @@
+# Site settings
+title: GSA Room Finder
+email: jeffrey.fredrickson@gsa.gov
+description: >
+  Finds rooms based on building sensor data.
+baseurl: "/pbs-sensor"
+url: "http://gsa.github.io"
+github_username: GSA
+
+# Build settings
+markdown: kramdown

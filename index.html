@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <label for="temperature-range">Temperature range:</label>
+          <input type="text" id="temperature-range" style="border: none;">
+          <div id="slider-temperature-range"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div id="room-list"></div>
+    </div>
+  </div><!--.row-->
+
+</div><!--.container-->
+
+<script src="{{ "/js/rooms.js" | prepend: site.baseurl }}"></script>
