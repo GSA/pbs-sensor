@@ -1,5 +1,5 @@
 # Site settings
-title: GSA Room Finder
+title: Room Finder
 email: jeffrey.fredrickson@gsa.gov
 description: >
   Finds rooms based on building sensor data.

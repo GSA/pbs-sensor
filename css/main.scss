@@ -2,3 +2,37 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
+
+$bootstrap-sm-min: 768px;
+$bootstrap-md-min: 992px;
+$bootstrap-lg-min: 1200px;
+
+.navbar {
+  @media (min-width: $bootstrap-sm-min) {
+    min-height: 80px;
+  }
+}
+
+.navbar-nav>li>a {
+  @media (min-width: $bootstrap-sm-min) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.navbar .logo img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  @media (min-width: $bootstrap-sm-min) {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+}
+
+.navbar-brand {
+  @media (min-width: $bootstrap-sm-min) {
+    padding: 30px;
+  }
+}
