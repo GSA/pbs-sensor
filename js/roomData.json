@@ -1,0 +1,14 @@
+[
+  { "number": "1001", "temperature": 68 },
+  { "number": "1002", "temperature": 73 },
+  { "number": "1003", "temperature": 70 },
+  { "number": "1004", "temperature": 67 },
+  { "number": "1005", "temperature": 69 },
+  { "number": "1006", "temperature": 72 },
+  { "number": "2001", "temperature": 66 },
+  { "number": "2002", "temperature": 73 },
+  { "number": "2003", "temperature": 67 },
+  { "number": "2004", "temperature": 71 },
+  { "number": "2005", "temperature": 71 },
+  { "number": "2006", "temperature": 74 }
+]

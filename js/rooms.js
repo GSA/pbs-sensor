@@ -17,14 +17,7 @@ var RoomList = Backbone.Collection.extend({
   }
 });
 
-var rooms = new RoomList([
-  new Room({ number: 1001, temperature: 68 }),
-  new Room({ number: 1002, temperature: 73 }),
-  new Room({ number: 1003, temperature: 70 }),
-  new Room({ number: 1004, temperature: 67 }),
-  new Room({ number: 1005, temperature: 69 }),
-  new Room({ number: 1006, temperature: 72 })
-]);
+var rooms = new RoomList();
 
 var columns = [{
   name: "number",
@@ -59,6 +52,16 @@ $(document).ready(function () {
     values: [ 68, 72 ],
     slide: function (event, ui) {
       updateTemperatureRange(ui.values[0], ui.values[1]);
+    }
+  });
+
+  rooms.fetch({
+    url: "js/roomData.json",
+    success: function () {
+      updateTemperatureRange($("#slider-temperature-range").slider("values", 0), $("#slider-temperature-range").slider("values", 1));
+    },
+    error: function () {
+      console.log("load fail");
     }
   });
 
