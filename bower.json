@@ -17,6 +17,7 @@
     "jquery-ui": "^1.11.4",
     "backgrid": "^0.3.7",
     "bootstrap": "^3.3.6",
-    "jquery-ui-touch-punch": "*"
+    "jquery-ui-touch-punch": "*",
+    "Chart.js": "^2.1.4"
   }
 }
