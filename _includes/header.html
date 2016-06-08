@@ -8,13 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="logo pull-left" href="#"><img src="{{ "/images/gsa_logo_150.png" | prepend: site.baseurl }}" alt="GSA"></a>
-      <a class="navbar-brand" href="#">{{ site.title }}</a>
+      <a class="logo pull-left" href="{{ '/' | prepend: site.baseurl }}"><img src="{{ "/images/gsa_logo_150.png" | prepend: site.baseurl }}" alt="GSA"></a>
+      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Search<span class="sr-only"> (current)</span></a></li>
+        <li><a href="{{ '/' | prepend: site.baseurl }}">Search<span class="sr-only"> (current)</span></a></li>
+        <li><a href="{{ '/stats.html' | prepend: site.baseurl }}">Stats</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
