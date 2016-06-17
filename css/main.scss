@@ -38,11 +38,24 @@ $bootstrap-lg-min: 1200px;
 }
 
 .average-temperatures {
-  .well {
-    text-align: center;
+  text-align: center;
+
+  .average-temperature {
+    padding: 1em 0 0.5em;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
   }
 
-  b {
-    font-size: 5rem;
+  p, h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  small {
+    color: #777;
+  }
+
+  .temp {
+    font-size: 4rem;
   }
 }
