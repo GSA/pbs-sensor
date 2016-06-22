@@ -1,0 +1,36 @@
+/*
+ * Use @import instead of "*= require" and "*= require_tree" so that stylesheets can access Bootstrap variables.
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar {
+  @media (min-width: $screen-sm-min) {
+    min-height: 80px;
+  }
+}
+
+.navbar-nav>li>a {
+  @media (min-width: $screen-sm-min) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.navbar .logo img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  @media (min-width: $screen-sm-min) {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+}
+
+.navbar-brand {
+  @media (min-width: $screen-sm-min) {
+    padding: 30px;
+  }
+}
