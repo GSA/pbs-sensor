@@ -2,34 +2,48 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1>Rooms</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to 'New Room', new_room_path, class: 'btn btn-default' %>
+    </div>
+  </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Time zone</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <label for="temperature-range">Temperature range:</label>
+            <input type="text" id="temperature-range" style="border: none;">
+            <div id="slider-temperature-range"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <table id="room-list" class="table table-striped table-bordered dt-responsive" width="100%">
+          <thead>
+            <tr>
+              <th>Room Number</th>
+              <th>Description</th>
+              <th>Time zone</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @rooms.each do |room| %>
+              <tr>
+                <td><%= room.name %></td>
+                <td><%= room.description %></td>
+                <td><%= room.time_zone %></td>
+                <td><%= link_to 'Show', room %></td>
+                <td><%= link_to 'Edit', edit_room_path(room) %></td>
+                <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div><!--.row-->
 
-    <tbody>
-      <% @rooms.each do |room| %>
-        <tr>
-          <td><%= room.name %></td>
-          <td><%= room.description %></td>
-          <td><%= room.time_zone %></td>
-          <td><%= link_to 'Show', room %></td>
-          <td><%= link_to 'Edit', edit_room_path(room) %></td>
-          <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Room', new_room_path %>
+  </div><!--.container-->
 
 </div>
