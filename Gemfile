@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-datatables-rails', '~> 3.4'
+gem 'jquery-ui-rails', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

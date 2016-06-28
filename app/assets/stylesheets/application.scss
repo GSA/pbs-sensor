@@ -1,9 +1,14 @@
 /*
- * Use @import instead of "*= require" and "*= require_tree" so that stylesheets can access Bootstrap variables.
+ * Use @import instead of "*= require" and "*= require_tree" for stylesheets that need to access Bootstrap variables.
+ *
+ *= require "jquery-ui/slider"
+ *= require "dataTables/bootstrap/3/jquery.dataTables.bootstrap"
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+// @import "scaffolds";
+@import "rooms";
 
 .navbar {
   @media (min-width: $screen-sm-min) {
