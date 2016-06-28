@@ -1,19 +1,26 @@
-var originalRoomData = [];
-var filteredRoomData = [];
-var roomTable;
+var PBS = PBS || {};
+PBS.roomFinder = PBS.roomFinder || {};
 
-function updateTemperatureRange(min, max) {
+PBS.roomFinder.originalRoomData = [];
+PBS.roomFinder.filteredRoomData = [];
+PBS.roomFinder.roomTable;
+
+PBS.roomFinder.updateTemperatureRange = function (min, max) {
   $("#temperature-range").val(min + " - " + max);
-  // filteredRoomData = originalRoomData.filter(function (room) {
-  //   return (room.temperature >= min && room.temperature <= max);
-  // });
-  filteredRoomData = originalRoomData;
-  updateTable(filteredRoomData);
-}
+  PBS.roomFinder.filteredRoomData = PBS.roomFinder.originalRoomData.filter(function (room) {
+    return (room.temperature >= min && room.temperature <= max);
+  });
+  PBS.roomFinder.filteredRoomData = PBS.roomFinder.originalRoomData;
+  PBS.roomFinder.updateTable(PBS.roomFinder.filteredRoomData);
+};
 
-function updateTable(roomData) {
-  $("#room-list").DataTable({
-    data: roomData,
+PBS.roomFinder.updateTable = function () {
+  $("#room-list").dataTable({
+    ajax: {
+      url: "/rooms.json",
+      dataSrc: ""
+    },
+    // data: roomData,
     destroy: true,
     searching: false,
     lengthChange: false,
@@ -23,14 +30,16 @@ function updateTable(roomData) {
       { data: "description" }
     ]
   });
-}
+};
 
 $(document).ready(function () {
-  $.get("/rooms.json", function (data, status) {
-    originalRoomData = data;
-    updateTable(originalRoomData);
-    updateTemperatureRange($("#slider-temperature-range").slider("values", 0), $("#slider-temperature-range").slider("values", 1));
-  });
+  // $.get("/rooms.json", function (data, status) {
+  //   PBS.roomFinder.originalRoomData = data;
+  //   PBS.roomFinder.updateTable(PBS.roomFinder.originalRoomData);
+  //   PBS.roomFinder.updateTemperatureRange($("#slider-temperature-range").slider("values", 0), $("#slider-temperature-range").slider("values", 1));
+  // });
+
+  PBS.roomFinder.updateTable();
 
   $("#slider-temperature-range").slider({
     range: true,
@@ -38,7 +47,7 @@ $(document).ready(function () {
     max: 80,
     values: [ 68, 72 ],
     slide: function (event, ui) {
-      updateTemperatureRange(ui.values[0], ui.values[1]);
+      PBS.roomFinder.updateTemperatureRange(ui.values[0], ui.values[1]);
     }
   });
 });
