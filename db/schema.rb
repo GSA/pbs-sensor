@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622214403) do
+ActiveRecord::Schema.define(version: 20160629163820) do
+
+  create_table "reading_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.integer  "room_id"
+    t.datetime "recorded_at"
+    t.float    "temperature"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["room_id"], name: "index_readings_on_room_id"
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name"

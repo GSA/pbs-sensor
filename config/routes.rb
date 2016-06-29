@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :rooms
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :rooms do
+    resources :readings, only: [:index, :show]
+  end
+
   root "rooms#index"
 end

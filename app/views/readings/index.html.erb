@@ -1,0 +1,33 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <h1>Readings for: <%= @room.name %></h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Recorded at</th>
+            <th>Temperature</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @readings.each do |reading| %>
+            <tr>
+              <td><%= reading.room.name %></td>
+              <td><%= reading.recorded_at %></td>
+              <td><%= reading.temperature %></td>
+              <td><%= link_to 'Show', room_reading_path(id: reading) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

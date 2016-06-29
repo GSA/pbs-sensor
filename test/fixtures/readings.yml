@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: one
+  recorded_at: 2016-06-29 12:38:20
+  temperature: 1.5
+
+two:
+  room: two
+  recorded_at: 2016-06-29 12:38:20
+  temperature: 1.5

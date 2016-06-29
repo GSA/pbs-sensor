@@ -1,0 +1,26 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <p>
+        <strong>Room:</strong>
+        <%= @reading.room.name %>
+      </p>
+
+      <p>
+        <strong>Recorded at:</strong>
+        <%= @reading.recorded_at %>
+      </p>
+
+      <p>
+        <strong>Temperature:</strong>
+        <%= @reading.temperature %>
+      </p>
+
+      <%= link_to 'Back', room_readings_path(room_id: @reading.room) %>
+
+    </div>
+  </div>
+</div>
