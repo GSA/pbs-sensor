@@ -4,7 +4,9 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    min_temperature = (params[:min_temperature] || 0).to_f
+    max_temperature = (params[:max_temperature] || 100).to_f
+    @rooms = Room.where(average_temperature: min_temperature..max_temperature)
   end
 
   # GET /rooms/1

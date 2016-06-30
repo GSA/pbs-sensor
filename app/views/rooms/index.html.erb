@@ -3,17 +3,17 @@
   <p id="notice"><%= notice %></p>
 
   <div class="row">
-    <div class="col-xs-12">
-      <%= link_to 'New Room', new_room_path, class: 'btn btn-default' %>
-    </div>
-  </div>
-
-  <div class="row">
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-body">
-            <label for="temperature-range">Temperature range:</label>
-            <input type="text" id="temperature-range" style="border: none;">
+            <p>
+              Temperature range:
+              <label for="filter-temp-min" class="sr-only">Min:</label>
+              <input type="text" id="filter-temp-min" class="filter-slider-value">
+              to
+              <label for="filter-temp-max" class="sr-only">Max:</label>
+              <input type="text" id="filter-temp-max" class="filter-slider-value">
+            </p>
             <div id="slider-temperature-range"></div>
           </div>
         </div>
@@ -22,26 +22,12 @@
         <table id="room-list" class="table table-striped table-bordered dt-responsive" width="100%">
           <thead>
             <tr>
-              <th>Room Number</th>
+              <th>Room number</th>
               <th>Description</th>
-              <!-- <th>Time zone</th>
-              <th colspan="3"></th> -->
+              <th>Time zone</th>
+              <th>Average temperature</th>
             </tr>
           </thead>
-          <!-- <tbody>
-            <% @rooms.each do |room| %>
-              <tr>
-                <td><%= room.name %></td>
-                <td><%= room.description %></td>
-                <td><%= room.time_zone %></td>
-                <td>
-                  <%= link_to 'Show', room, class: 'btn btn-default' %>
-                  <%= link_to 'Edit', edit_room_path(room), class: 'btn btn-default' %>
-                  <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody> -->
         </table>
       </div>
     </div><!--.row-->
