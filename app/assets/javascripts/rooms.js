@@ -34,12 +34,22 @@ PBS.rooms.index = function () {
         columnDefs: [
           {
             targets: [COL_ROOM_NUMBER],
+            responsivePriority: 1,
             render: function (data, type, full, meta) {
               return '<a href="/rooms/' + full.id + '">' + data + '</a>';
             }
           },
           {
+            targets: [COL_DESCRIPTION],
+            responsivePriority: 4
+          },
+          {
+            targets: [COL_TIME_ZONE],
+            responsivePriority: 3
+          },
+          {
             targets: [COL_AVERAGE_TEMPERATURE],
+            responsivePriority: 2,
             render: $.fn.dataTable.render.number(',', '.', '2', '', ' &deg;' + temperatureUnits)
           }
         ]
