@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/slider
+//= require jquery.ui.touch-punch.min
 //= require bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/dataTables.responsive
