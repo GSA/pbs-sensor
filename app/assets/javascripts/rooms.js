@@ -91,32 +91,36 @@ PBS.rooms.index = function () {
 
     loadData();
 
-    $("#filter-temp-min, #filter-temp-max, #filter-sound-min, #filter-sound-max").keyup(function () {
+    // Perform live updates as the user adjusts filter values
+    $(".filter-slider-value").keyup(function () {
       updateFilters();
     });
 
-    $("#slider-temperature-range").slider({
-      range: true,
-      min: 15,
-      max: 30,
-      values: [filterTemperatureMin, filterTemperatureMax],
-      slide: function (event, ui) {
-        $("#filter-temp-min").val(ui.values[0]);
-        $("#filter-temp-max").val(ui.values[1]);
-        updateFilters();
-      }
+    // Update the sliders to reflect manual entry in the filter input fields
+    $(".filter-slider-value").change(function () {
+      $(".filter-slider").each(function () {
+        var $filterMinInput = $("#" + $(this).data("min-input-id"));
+        var $filterMaxInput = $("#" + $(this).data("max-input-id"));
+        $(this).slider("values", 0, $filterMinInput.val());
+        $(this).slider("values", 1, $filterMaxInput.val());
+      });
     });
 
-    $("#slider-sound-range").slider({
-      range: true,
-      min: 40,
-      max: 60,
-      values: [filterSoundMin, filterSoundMax],
-      slide: function (event, ui) {
-        $("#filter-sound-min").val(ui.values[0]);
-        $("#filter-sound-max").val(ui.values[1]);
-        updateFilters();
-      }
+    // Initialize each slider using its data-* attributes
+    $(".filter-slider").each(function () {
+      var $filterMinInput = $("#" + $(this).data("min-input-id"));
+      var $filterMaxInput = $("#" + $(this).data("max-input-id"));
+      $(this).slider({
+        range: true,
+        min: $(this).data("min"),
+        max: $(this).data("max"),
+        values: [$filterMinInput.val(), $filterMaxInput.val()],
+        slide: function (event, ui) {
+          $filterMinInput.val(ui.values[0]);
+          $filterMaxInput.val(ui.values[1]);
+          updateFilters();
+        }
+      });
     });
   });
 }
