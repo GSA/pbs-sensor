@@ -16,12 +16,15 @@ PBS.rooms.index = function () {
     var COL_TIME_ZONE = 2;
     var COL_AVERAGE_TEMPERATURE = 3;
     var COL_AVERAGE_SOUND = 4;
+    var COL_AVERAGE_CO2 = 5;
 
     var filter_params = {
       min_temperature: parseFloat($("#filter-temp-min").val()),
       max_temperature: parseFloat($("#filter-temp-max").val()),
       min_sound: parseFloat($("#filter-sound-min").val()),
-      max_sound: parseFloat($("#filter-sound-max").val())
+      max_sound: parseFloat($("#filter-sound-max").val()),
+      min_co2: parseFloat($("#filter-co2-min").val()),
+      max_co2: parseFloat($("#filter-co2-max").val())
     };
 
     $.get("/rooms.json", filter_params, function (data, status) {
@@ -33,7 +36,8 @@ PBS.rooms.index = function () {
           { data: "description" },
           { data: "time_zone" },
           { data: "average_temperature" },
-          { data: "average_sound" }
+          { data: "average_sound" },
+          { data: "average_co2" }
         ],
         columnDefs: [
           {
@@ -60,6 +64,11 @@ PBS.rooms.index = function () {
             targets: [COL_AVERAGE_SOUND],
             responsivePriority: 2,
             render: $.fn.dataTable.render.number(',', '.', '2', '', ' dBm')
+          },
+          {
+            targets: [COL_AVERAGE_CO2],
+            responsivePriority: 2,
+            render: $.fn.dataTable.render.number(',', '.', '2', '', ' ppm')
           }
         ]
       });
@@ -82,12 +91,16 @@ PBS.rooms.index = function () {
     var filterTemperatureMax = 22;
     var filterSoundMin = 40;
     var filterSoundMax = 44;
+    var filterCO2Min = 400;
+    var filterCO2Max = 700;
 
     // Apply initial filters to the input fields
     $("#filter-temp-min").val(filterTemperatureMin);
     $("#filter-temp-max").val(filterTemperatureMax);
     $("#filter-sound-min").val(filterSoundMin);
     $("#filter-sound-max").val(filterSoundMax);
+    $("#filter-co2-min").val(filterCO2Min);
+    $("#filter-co2-max").val(filterCO2Max);
 
     loadData();
 

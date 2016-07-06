@@ -8,7 +8,7 @@ namespace :data do
     ARGV.each { |a| task a.to_sym do ; end }
 
     # Validate command line arguments
-    valid_sensor_types = [:temperature, :sound]
+    valid_sensor_types = [:temperature, :sound, :co2]
     sensor_type = ARGV[1].to_sym
     filename = ARGV[2]
     unless valid_sensor_types.include? sensor_type
@@ -71,6 +71,9 @@ namespace :data do
         end
         if sensor_type == :sound
           reading.sound = value
+        end
+        if sensor_type == :co2
+          reading.co2 = value
         end
         reading.save
         print "." if count % 1000 == 0

@@ -8,7 +8,9 @@ class RoomsController < ApplicationController
     max_temperature = (params[:max_temperature] || 100).to_f
     min_sound = (params[:min_sound] || 0).to_f
     max_sound = (params[:max_sound] || 100).to_f
-    @rooms = Room.where(average_temperature: min_temperature..max_temperature, average_sound: min_sound..max_sound)
+    min_co2 = (params[:min_co2] || 0).to_f
+    max_co2 = (params[:max_co2] || 1000).to_f
+    @rooms = Room.where(average_temperature: min_temperature..max_temperature, average_sound: min_sound..max_sound, average_co2: min_co2..max_co2)
   end
 
   # GET /rooms/1
