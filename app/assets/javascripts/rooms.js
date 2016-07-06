@@ -15,10 +15,13 @@ PBS.rooms.index = function () {
     var COL_DESCRIPTION = 1;
     var COL_TIME_ZONE = 2;
     var COL_AVERAGE_TEMPERATURE = 3;
+    var COL_AVERAGE_SOUND = 4;
 
     var filter_params = {
       min_temperature: parseFloat($("#filter-temp-min").val()),
-      max_temperature: parseFloat($("#filter-temp-max").val())
+      max_temperature: parseFloat($("#filter-temp-max").val()),
+      min_sound: parseFloat($("#filter-sound-min").val()),
+      max_sound: parseFloat($("#filter-sound-max").val())
     };
 
     $.get("/rooms.json", filter_params, function (data, status) {
@@ -29,7 +32,8 @@ PBS.rooms.index = function () {
           { data: "name" },
           { data: "description" },
           { data: "time_zone" },
-          { data: "average_temperature" }
+          { data: "average_temperature" },
+          { data: "average_sound" }
         ],
         columnDefs: [
           {
@@ -51,6 +55,11 @@ PBS.rooms.index = function () {
             targets: [COL_AVERAGE_TEMPERATURE],
             responsivePriority: 2,
             render: $.fn.dataTable.render.number(',', '.', '2', '', ' &deg;' + temperatureUnits)
+          },
+          {
+            targets: [COL_AVERAGE_SOUND],
+            responsivePriority: 2,
+            render: $.fn.dataTable.render.number(',', '.', '2', '', ' dBm')
           }
         ]
       });
@@ -71,14 +80,18 @@ PBS.rooms.index = function () {
     // Set filter defaults (Later: set defaults via user profile)
     var filterTemperatureMin = 20;
     var filterTemperatureMax = 22;
+    var filterSoundMin = 40;
+    var filterSoundMax = 44;
 
     // Apply initial filters to the input fields
     $("#filter-temp-min").val(filterTemperatureMin);
     $("#filter-temp-max").val(filterTemperatureMax);
+    $("#filter-sound-min").val(filterSoundMin);
+    $("#filter-sound-max").val(filterSoundMax);
 
     loadData();
 
-    $("#filter-temp-min, #filter-temp-max").keyup(function () {
+    $("#filter-temp-min, #filter-temp-max, #filter-sound-min, #filter-sound-max").keyup(function () {
       updateFilters();
     });
 
@@ -90,6 +103,18 @@ PBS.rooms.index = function () {
       slide: function (event, ui) {
         $("#filter-temp-min").val(ui.values[0]);
         $("#filter-temp-max").val(ui.values[1]);
+        updateFilters();
+      }
+    });
+
+    $("#slider-sound-range").slider({
+      range: true,
+      min: 40,
+      max: 60,
+      values: [filterSoundMin, filterSoundMax],
+      slide: function (event, ui) {
+        $("#filter-sound-min").val(ui.values[0]);
+        $("#filter-sound-max").val(ui.values[1]);
         updateFilters();
       }
     });

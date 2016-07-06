@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629203551) do
+ActiveRecord::Schema.define(version: 20160706133719) do
 
   create_table "readings", force: :cascade do |t|
     t.integer  "room_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160629203551) do
     t.float    "temperature"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.float    "sound"
     t.index ["room_id"], name: "index_readings_on_room_id"
   end
 
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160629203551) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.float    "average_temperature"
+    t.float    "average_sound"
   end
 
 end
