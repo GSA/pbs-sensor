@@ -2,13 +2,16 @@ require 'csv'
 
 namespace :data do
   desc "Imports sensor data into the application"
-  # Usage: rake data:import SENSOR_TYPE FILENAME
   task import: :environment do
     # Create dummy tasks for each arg because rake will automatically try to run each arg as a task
     ARGV.each { |a| task a.to_sym do ; end }
 
     # Validate command line arguments
     valid_sensor_types = [:temperature, :sound, :co2]
+    unless ARGV.count > 2
+      puts "Usage: rake data:import SENSOR_TYPE FILENAME"
+      exit 1
+    end
     sensor_type = ARGV[1].to_sym
     filename = ARGV[2]
     unless valid_sensor_types.include? sensor_type
