@@ -7,6 +7,13 @@ PBS.rooms.index = function () {
   var temperatureUnits = "C"; // Later: set based on user profile
 
   /*
+   * Returns the min or max data value of the given modality filter option.
+   */
+  function getRadioFilterOption(modality, minMax) {
+    return $("input[name=filter-" + modality + "]:checked").data(minMax);
+  }
+
+  /*
    * Fetches filtered data via ajax. Loads the data into the room list table.
    */
   function loadData() {
@@ -21,10 +28,10 @@ PBS.rooms.index = function () {
     var filter_params = {
       min_temperature: parseFloat($("#filter-temp-min").val()),
       max_temperature: parseFloat($("#filter-temp-max").val()),
-      min_sound: parseFloat($("#filter-sound-min").val()),
-      max_sound: parseFloat($("#filter-sound-max").val()),
-      min_co2: parseFloat($("#filter-co2-min").val()),
-      max_co2: parseFloat($("#filter-co2-max").val())
+      min_sound: parseFloat(getRadioFilterOption("sound", "min")),
+      max_sound: parseFloat(getRadioFilterOption("sound", "max")),
+      min_co2: parseFloat(getRadioFilterOption("co2", "min")),
+      max_co2: parseFloat(getRadioFilterOption("co2", "max"))
     };
 
     $.get("/rooms.json", filter_params, function (data, status) {
@@ -89,22 +96,29 @@ PBS.rooms.index = function () {
     // Set filter defaults (Later: set defaults via user profile)
     var filterTemperatureMin = 20;
     var filterTemperatureMax = 22;
-    var filterSoundMin = 40;
-    var filterSoundMax = 44;
-    var filterCO2Min = 400;
-    var filterCO2Max = 700;
+    // var filterSoundMin = 40;
+    // var filterSoundMax = 55;
+    // var filterCO2Min = 400;
+    // var filterCO2Max = 700;
+    var filterSoundIndex = 0;
+    var filterCO2Index = 0;
 
     // Apply initial filters to the input fields
     $("#filter-temp-min").val(filterTemperatureMin);
     $("#filter-temp-max").val(filterTemperatureMax);
-    $("#filter-sound-min").val(filterSoundMin);
-    $("#filter-sound-max").val(filterSoundMax);
-    $("#filter-co2-min").val(filterCO2Min);
-    $("#filter-co2-max").val(filterCO2Max);
+    // $("#filter-sound-min").val(filterSoundMin);
+    // $("#filter-sound-max").val(filterSoundMax);
+    // $("#filter-co2-min").val(filterCO2Min);
+    // $("#filter-co2-max").val(filterCO2Max);
+    $("input[name=filter-sound][data-index=" + filterSoundIndex + "]").parent().click();
+    $("input[name=filter-co2][data-index=" + filterCO2Index + "]").parent().click();
 
     loadData();
 
     // Perform live updates as the user adjusts filter values
+    $(".filter-button input").change(function () {
+      updateFilters();
+    });
     $(".filter-slider-value").keyup(function () {
       updateFilters();
     });
