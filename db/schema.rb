@@ -12,27 +12,28 @@
 
 ActiveRecord::Schema.define(version: 20160706144112) do
 
-  create_table "readings", force: :cascade do |t|
+  create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "room_id"
     t.datetime "recorded_at"
-    t.float    "temperature"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.float    "sound"
-    t.float    "co2"
-    t.index ["room_id"], name: "index_readings_on_room_id"
+    t.float    "temperature", limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.float    "sound",       limit: 24
+    t.float    "co2",         limit: 24
+    t.index ["room_id"], name: "index_readings_on_room_id", using: :btree
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "code",                                null: false
+    t.string   "code",                                           null: false
     t.string   "description"
-    t.string   "time_zone",           default: "UTC"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.float    "average_temperature"
-    t.float    "average_sound"
-    t.float    "average_co2"
+    t.string   "time_zone",                      default: "UTC"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.float    "average_temperature", limit: 24
+    t.float    "average_sound",       limit: 24
+    t.float    "average_co2",         limit: 24
   end
 
+  add_foreign_key "readings", "rooms"
 end
