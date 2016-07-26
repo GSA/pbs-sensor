@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Name:</strong>
-  <%= @room.name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @room.description %>
-</p>
+  <div class="row">
+    <h1>Room: <%= @room.name %></h1>
 
-<p>
-  <strong>Time zone:</strong>
-  <%= @room.time_zone %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @room.description %>
+    </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+    <p>
+      <strong>Time zone:</strong>
+      <%= @room.time_zone %>
+    </p>
+
+    <!-- <%= link_to 'Edit', edit_room_path(@room) %> | -->
+    <%= link_to 'Back', rooms_path %>
+  </div>
+</div>
