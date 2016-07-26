@@ -6,11 +6,11 @@ class RoomsController < ApplicationController
   def index
     min_temperature = (params[:min_temperature] || 0).to_f
     max_temperature = (params[:max_temperature] || 100).to_f
-    min_sound = (params[:min_sound] || 0).to_f
-    max_sound = (params[:max_sound] || 100).to_f
-    min_co2 = (params[:min_co2] || 0).to_f
-    max_co2 = (params[:max_co2] || 1000).to_f
-    @rooms = Room.where(average_temperature: min_temperature..max_temperature, average_sound: min_sound..max_sound, average_co2: min_co2..max_co2)
+    sound_ranges_raw = params[:sound_ranges] || "0-100.00"
+    co2_ranges_raw = params[:co2_ranges] || "0-1000.00"
+    sound_ranges = sound_ranges_raw.split(",").collect { |r| Range.new(*r.split("-").map(&:to_f)) }
+    co2_ranges = co2_ranges_raw.split(",").collect { |r| Range.new(*r.split("-").map(&:to_f)) }
+    @rooms = Room.where(average_temperature: min_temperature..max_temperature, average_sound: sound_ranges, average_co2: co2_ranges)
   end
 
   # GET /rooms/1
