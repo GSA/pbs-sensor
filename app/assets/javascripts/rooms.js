@@ -4,7 +4,15 @@ PBS.rooms.index = function () {
   var FILTER_AJAX_DELAY = 500; // Milliseconds to wait for more filter input before sending an Ajax request
 
   var timer = null;
-  var temperatureUnits = "C"; // Later: set based on user profile
+  var temperatureUnits = "F"; // Later: set based on user profile
+
+  function toFahrenheit(temperature) {
+    return temperature * 9.0/5.0 + 32;
+  }
+
+  function toCelsius(temperature) {
+    return (temperature - 32) * 5.0/9.0;
+  }
 
   /*
    * Returns the min or max data value of the given modality filter option.
@@ -26,8 +34,8 @@ PBS.rooms.index = function () {
     var COL_AVERAGE_CO2 = 5;
 
     var filter_params = {
-      min_temperature: parseFloat($("#filter-temp-min").val()),
-      max_temperature: parseFloat($("#filter-temp-max").val()),
+      min_temperature: toCelsius(parseFloat($("#filter-temp-min").val())),
+      max_temperature: toCelsius(parseFloat($("#filter-temp-max").val())),
       min_sound: parseFloat(getRadioFilterOption("sound", "min")),
       max_sound: parseFloat(getRadioFilterOption("sound", "max")),
       min_co2: parseFloat(getRadioFilterOption("co2", "min")),
@@ -65,7 +73,10 @@ PBS.rooms.index = function () {
           {
             targets: [COL_AVERAGE_TEMPERATURE],
             responsivePriority: 2,
-            render: $.fn.dataTable.render.number(',', '.', '2', '', ' &deg;' + temperatureUnits)
+            render: function (data, type, full, meta) {
+              var f = toFahrenheit(data);
+              return f.toFixed(2) + ' &deg;F';
+            }
           },
           {
             targets: [COL_AVERAGE_SOUND],
@@ -94,8 +105,8 @@ PBS.rooms.index = function () {
 
   $(document).ready(function () {
     // Set filter defaults (Later: set defaults via user profile)
-    var filterTemperatureMin = 20;
-    var filterTemperatureMax = 22;
+    var filterTemperatureMin = 68;
+    var filterTemperatureMax = 72;
     // var filterSoundMin = 40;
     // var filterSoundMax = 55;
     // var filterCO2Min = 400;
