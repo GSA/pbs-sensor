@@ -39,10 +39,9 @@ PBS.rooms.index = function () {
     // DataTables column numbers
     var COL_ROOM_NUMBER = 0;
     var COL_DESCRIPTION = 1;
-    var COL_TIME_ZONE = 2;
-    var COL_AVERAGE_TEMPERATURE = 3;
-    var COL_AVERAGE_SOUND = 4;
-    var COL_AVERAGE_CO2 = 5;
+    var COL_AVERAGE_TEMPERATURE = 2;
+    var COL_AVERAGE_SOUND = 3;
+    var COL_AVERAGE_CO2 = 4;
 
     var filter_params = {
       min_temperature: toCelsius(parseFloat($("#filter-temp-min").val())),
@@ -58,7 +57,6 @@ PBS.rooms.index = function () {
         columns: [
           { data: "name" },
           { data: "description" },
-          { data: "time_zone" },
           { data: "average_temperature" },
           { data: "average_sound" },
           { data: "average_co2" }
@@ -73,10 +71,6 @@ PBS.rooms.index = function () {
           },
           {
             targets: [COL_DESCRIPTION],
-            responsivePriority: 4
-          },
-          {
-            targets: [COL_TIME_ZONE],
             responsivePriority: 3
           },
           {
