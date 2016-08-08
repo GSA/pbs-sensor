@@ -22,36 +22,28 @@
           <div class="panel-body">
             <p>
               Noise level:
+              <label for="filter-sound-min" class="sr-only">Min:</label>
+              <input type="text" id="filter-sound-min" class="filter-slider-value">
+              to
+              <label for="filter-sound-max" class="sr-only">Max:</label>
+              <input type="text" id="filter-sound-max" class="filter-slider-value">
+              dB
             </p>
-            <div class="btn-group btn-group-justified" role="group" aria-label="Noise level selection" data-toggle="buttons">
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-sound" data-index="0" data-min="0" data-max="44.99">Quiet<br><small>&lt; 45 dB</small>
-              </label>
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-sound" data-index="1" data-min="45" data-max="55">Typical<br><small>45-55 dB</small>
-              </label>
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-sound" data-index="2" data-min="55.01" data-max="100">Noisy<br><small>&gt; 55 dB</small>
-              </label>
-            </div>
+            <div id="slider-sound-range" class="filter-slider" data-min="40" data-max="70" data-min-input-id="filter-sound-min" data-max-input-id="filter-sound-max"></div>
           </div>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
             <p>
               Air quality (CO<sub>2</sub>):
+              <label for="filter-co2-min" class="sr-only">Min:</label>
+              <input type="text" id="filter-co2-min" class="filter-slider-value">
+              to
+              <label for="filter-co2-max" class="sr-only">Max:</label>
+              <input type="text" id="filter-co2-max" class="filter-slider-value">
+              ppm
             </p>
-            <div class="btn-group btn-group-justified" role="group" aria-label="Air quality selection" data-toggle="buttons">
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-co2" data-index="0" data-min="0" data-max="699.99">Fresh<br><small>&lt; 700 ppm</small>
-              </label>
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-co2" data-index="1" data-min="700" data-max="1000">Okay<br><small>700-1000 ppm</small>
-              </label>
-              <label class="btn btn-default filter-button">
-                <input type="checkbox" autocomplete="off" name="filter-co2" data-index="2" data-min="1000.01" data-max="5000">Stuffy<br><small>&gt; 1000 ppm</small>
-              </label>
-            </div>
+            <div id="slider-co2-range" class="filter-slider" data-min="0" data-max="2000" data-min-input-id="filter-co2-min" data-max-input-id="filter-co2-max"></div>
           </div>
         </div>
       </div>

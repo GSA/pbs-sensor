@@ -46,8 +46,10 @@ PBS.rooms.index = function () {
     var filter_params = {
       min_temperature: toCelsius(parseFloat($("#filter-temp-min").val())),
       max_temperature: toCelsius(parseFloat($("#filter-temp-max").val())),
-      sound_ranges: getFilterRanges("sound"),
-      co2_ranges: getFilterRanges("co2")
+      min_sound: parseFloat($("#filter-sound-min").val()),
+      max_sound: parseFloat($("#filter-sound-max").val()),
+      min_co2: parseFloat($("#filter-co2-min").val()),
+      max_co2: parseFloat($("#filter-co2-max").val())
     };
 
     $.get("/rooms.json", filter_params, function (data, status) {
@@ -108,20 +110,23 @@ PBS.rooms.index = function () {
 
   $(document).ready(function () {
     // Set filter defaults (Later: set defaults via user profile)
+    // Temperature comfort ranges: <67, 67-73, >73
     var filterTemperatureMin = 67;
     var filterTemperatureMax = 73;
-    var filterSoundIndexes = [0, 1];
-    var filterCO2Indexes = [0, 1];
+    // Sound comfort ranges: <45, 45-55, >55
+    var filterSoundMin = 40;
+    var filterSoundMax = 55;
+    // CO2 comfort ranges: <700, 700-1000, >1000
+    var filterCO2Min = 0;
+    var filterCO2Max = 1000;
 
     // Apply initial filters to the input fields
     $("#filter-temp-min").val(filterTemperatureMin);
     $("#filter-temp-max").val(filterTemperatureMax);
-    filterSoundIndexes.forEach(function (element, index, array) {
-      $("input[name=filter-sound][data-index=" + element + "]").parent().click();
-    });
-    filterCO2Indexes.forEach(function (element, index, array) {
-      $("input[name=filter-co2][data-index=" + element + "]").parent().click();
-    });
+    $("#filter-sound-min").val(filterSoundMin);
+    $("#filter-sound-max").val(filterSoundMax);
+    $("#filter-co2-min").val(filterCO2Min);
+    $("#filter-co2-max").val(filterCO2Max);
 
     loadData();
 
