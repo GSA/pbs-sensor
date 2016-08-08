@@ -110,9 +110,9 @@ PBS.rooms.index = function () {
 
   $(document).ready(function () {
     // Set filter defaults (Later: set defaults via user profile)
-    // Temperature comfort ranges: <67, 67-73, >73
-    var filterTemperatureMin = 67;
-    var filterTemperatureMax = 73;
+    // Temperature comfort ranges: <68, 68-74, >74
+    var filterTemperatureMin = 68;
+    var filterTemperatureMax = 74;
     // Sound comfort ranges: <45, 45-55, >55
     var filterSoundMin = 40;
     var filterSoundMax = 55;
