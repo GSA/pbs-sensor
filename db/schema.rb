@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706144112) do
+ActiveRecord::Schema.define(version: 20160809182408) do
+
+  create_table "buildings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "time_zone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "room_id"
@@ -25,15 +32,17 @@ ActiveRecord::Schema.define(version: 20160706144112) do
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "code",                                           null: false
+    t.string   "code",                           null: false
     t.string   "description"
-    t.string   "time_zone",                      default: "UTC"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.float    "average_temperature", limit: 24
     t.float    "average_sound",       limit: 24
     t.float    "average_co2",         limit: 24
+    t.integer  "building_id"
+    t.index ["building_id"], name: "index_rooms_on_building_id", using: :btree
   end
 
   add_foreign_key "readings", "rooms"
+  add_foreign_key "rooms", "buildings"
 end
