@@ -17,8 +17,19 @@ input.filter-slider-value {
   height: 12px;
   margin-top: 10px;
   background: #00f000;
-  background: -moz-linear-gradient(left,  #00f000 0%, #f0f000 60%, #ff0000 100%);
-  background: -webkit-linear-gradient(left,  #00f000 0%,#f0f000 60%,#ff0000 100%);
-  background: linear-gradient(to right,  #00f000 0%,#f0f000 60%,#ff0000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f000', endColorstr='#ff0000',GradientType=1 );
+  background: -moz-linear-gradient(left, #00f000 0%, #f0f000 60%, #ff0000 100%);
+  background: -webkit-linear-gradient(left, #00f000 0%, #f0f000 60%, #ff0000 100%);
+  background: linear-gradient(to right, #00f000 0%, #f0f000 60%, #ff0000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00f000', endColorstr='#ff0000', GradientType=1);
+}
+
+.filter-range-map-blue-red {
+  width: 100%;
+  height: 12px;
+  margin-top: 10px;
+  background: #0000f0;
+  background: -moz-linear-gradient(left, #0000f0 0%, #f00000 100%);
+  background: -webkit-linear-gradient(left, #0000f0 0%, #f00000 100%);
+  background: linear-gradient(to right, #0000f0 0%, #f00000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000f0', endColorstr='#f00000', GradientType=1);
 }
