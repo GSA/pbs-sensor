@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 input.filter-slider-value {
-  width: 3em;
+  width: 3.5em;
   font-weight: bold;
   text-align: center;
 }
@@ -12,41 +12,48 @@ input.filter-slider-value {
   color: $gray;
 }
 
-.filter-range-map {
+.filter-range-labels {
+  margin-top: 0.5em;
   display: table;
   width: 100%;
-  margin-top: 10px;
-
-  .filter-range-label {
-    font-size: smaller;
-    font-weight: bold;
-    display: table-cell;
-    width: 33.33%;
-    padding: 0.2em 0.5em;
-  }
-
-  .filter-range-label-mid {
-    text-align: center;
-  }
-
-  .filter-range-label-max {
-    text-align: right;
-  }
 }
 
-
-.filter-range-map-green-yellow-red {
-  background: linear-gradient(to right, #00f000 0%, #f0f000 60%, #f00000 100%);
-
-  .filter-range-label {
-    color: black;
-  }
+.filter-range-label {
+  display: table-cell;
+  width: 33.33%;
 }
 
-.filter-range-map-blue-red {
+.filter-range-label-mid {
+  text-align: center;
+}
+
+.filter-range-label-max {
+  text-align: right;
+}
+
+#slider-temperature-range {
   background: linear-gradient(to right, #0000f0 0%, #f00000 100%);
+}
 
-  .filter-range-label {
-    color: white;
-  }
+#slider-sound-range,
+#slider-co2-range {
+  background: linear-gradient(to right, #00f000 0%, #f0f000 60%, #f00000 100%);
+}
+
+.filter-slider {
+  border: none;
+  border-radius: 0;
+}
+
+.filter-slider .ui-slider-handle {
+  border-radius: 50%;
+  margin-top: 1px;
+  border-color: $gray-light;
+}
+
+.filter-slider .ui-slider-range {
+  border: 1px solid $gray-light;
+  background: repeating-linear-gradient(135deg, $gray-light, $gray-light 25%, white 25%, white 50%) top left fixed;
+  background-size: 20px 20px;
+  opacity: 0.2;
 }
