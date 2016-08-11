@@ -32,11 +32,13 @@ input.filter-slider-value {
 }
 
 #slider-temperature-range {
+  background: $gray-lighter; // IE9
   background: linear-gradient(to right, #0000f0 0%, #f00000 100%);
 }
 
 #slider-sound-range,
 #slider-co2-range {
+  background: $gray-lighter; // IE9
   background: linear-gradient(to right, #00f000 0%, #f0f000 60%, #f00000 100%);
 }
 
@@ -55,6 +57,7 @@ input.filter-slider-value {
 
 .filter-slider .ui-slider-range {
   border: 1px solid $gray-light;
+  background: $gray; // IE9
   background: repeating-linear-gradient(135deg, $gray-light, $gray-light 25%, white 25%, white 50%) top left fixed;
   background-size: 20px 20px;
   opacity: 0.2;
