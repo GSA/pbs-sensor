@@ -53,6 +53,12 @@ input.filter-slider-value {
   border-radius: 50%;
   margin-top: 1px;
   border-color: $gray-light;
+  outline: none;
+
+  &.ui-state-focus {
+    border-color: $brand-primary;
+    border-width: 2px;
+  }
 }
 
 .filter-slider .ui-slider-range {
