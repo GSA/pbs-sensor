@@ -20,3 +20,9 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require shared
 //= require_tree .
+
+
+// Initialize all popovers on every page
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});

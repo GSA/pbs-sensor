@@ -12,6 +12,12 @@ input.filter-slider-value {
   color: $gray;
 }
 
+.filter-info-button {
+  color: $gray-light;
+  float: right;
+  margin-top: 5px;
+}
+
 .filter-range-labels {
   margin-top: 0.5em;
   display: table;
