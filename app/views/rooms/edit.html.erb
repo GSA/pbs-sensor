@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
-    <h1>Editing Room</h1>
+    <h1>Editing Room: <%= @room.name %></h1>
 
-    <%= render 'form', room: @room %>
-
-    <%= link_to 'Show', @room %> |
-    <%= link_to 'Back', rooms_path %>
+    <%= form_for(@room, html: { class: "form-horizontal" }) do |form| %>
+      <%= render 'fields', room: @room, form: form %>
+      <div class="actions col-sm-offset-2">
+        <%= form.submit "Save", class: "btn btn-primary" %>
+        <%= link_to 'Cancel', @room, class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
 </div>

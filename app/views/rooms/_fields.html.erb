@@ -1,0 +1,45 @@
+<% if room.errors.any? %>
+  <div class="col-sm-12 alert alert-danger" role="alert">
+    <p><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</p>
+    <ul>
+    <% room.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= form.label :code, class: "col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :name, class: "col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :description, class: "col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :building, class: "col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <%= collection_select(:room, :building_id, Building.all, :id, :name, { include_blank: true }, { class: "form-control" }) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :room_type, class: "col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <%= collection_select(:room, :room_type_id, RoomType.all, :id, :name, { include_blank: true }, { class: "form-control" }) %>
+  </div>
+</div>

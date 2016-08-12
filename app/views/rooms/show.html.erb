@@ -1,8 +1,12 @@
 <div class="container">
 
-  <p id="notice"><%= notice %></p>
-
   <div class="row">
+    <% if notice %>
+      <div class="col-sm-12 alert alert-info" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+
     <h1>Room: <%= @room.name %></h1>
 
     <p>
@@ -10,7 +14,17 @@
       <%= @room.description %>
     </p>
 
-    <!-- <%= link_to 'Edit', edit_room_path(@room) %> | -->
-    <%= link_to 'Back', rooms_path %>
+    <p>
+      <strong>Building:</strong>
+      <%= @room.building %>
+    </p>
+
+    <p>
+      <strong>Room Type:</strong>
+      <%= @room.room_type %>
+    </p>
+
+    <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-default" %>
+    <%= link_to 'Back', rooms_path, class: "btn btn-default" %>
   </div>
 </div>
