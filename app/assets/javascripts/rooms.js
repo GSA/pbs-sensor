@@ -6,6 +6,41 @@ PBS.rooms.index = function () {
   var timer = null;
   var temperatureUnits = "F"; // Later: set based on user profile
 
+  var comfort_ranges = {
+    "temperature": [
+      [0, 67.9999, "cold"],
+      [68, 73.9999, "typical"],
+      [74, 99, "warm"]
+    ],
+    "sound": [
+      [0, 44.9999, "quiet"],
+      [45, 54.9999, "typical"],
+      [55, 99, "noisy"]
+    ],
+    "co2": [
+      [0, 699.9999, "fresh"],
+      [700, 999.9999, "acceptable"],
+      [1000, 9999, "stuffy"]
+    ]
+  }
+
+  /*
+   * Returns a descriptive term for a given modality and modality value. The
+   * modality should be a string: "temperature", "sound", or "co2".
+   */
+  function getComfortDescriptor(modality, value) {
+    var ranges = comfort_ranges[modality];
+    var descriptor = "";
+    ranges.forEach(function (element, index, array) {
+      var range_min = element[0];
+      var range_descriptor = element[2];
+      if (value >= range_min) {
+        descriptor = range_descriptor;
+      }
+    });
+    return descriptor;
+  }
+
   function toFahrenheit(temperature) {
     return temperature * 9.0/5.0 + 32;
   }
@@ -30,6 +65,18 @@ PBS.rooms.index = function () {
       ranges += $(this).data("min") + "-" + $(this).data("max") + ",";
     });
     return ranges;
+  }
+
+  /*
+   * Returns formatted HTML containing a modality descriptor, value, and suffix.
+   * All values are formatted to 2 decimal points.
+   */
+  function formatRoomModalityValue(modality, value, suffix) {
+    var desc = getComfortDescriptor(modality, value);
+    var desc_capitalized = desc.charAt(0).toUpperCase() + desc.slice(1);
+    var formatted_value = value.toFixed(2) + suffix;
+    var classes = "room-list-modality-value modality-" + modality + " descriptor-" + desc;
+    return '<div class="' + classes + '"><p>' + desc_capitalized + '</p>' + '<small>' + formatted_value + '</small></div>';
   }
 
   /*
@@ -80,18 +127,22 @@ PBS.rooms.index = function () {
             responsivePriority: 2,
             render: function (data, type, full, meta) {
               var f = toFahrenheit(data);
-              return f.toFixed(2) + ' &deg;F';
+              return formatRoomModalityValue("temperature", f, " &deg;F");
             }
           },
           {
             targets: [COL_AVERAGE_SOUND],
             responsivePriority: 2,
-            render: $.fn.dataTable.render.number(',', '.', '2', '', ' dBm')
+            render: function (data, type, full, meta) {
+              return formatRoomModalityValue("sound", data, " dB");
+            }
           },
           {
             targets: [COL_AVERAGE_CO2],
             responsivePriority: 2,
-            render: $.fn.dataTable.render.number(',', '.', '2', '', ' ppm')
+            render: function (data, type, full, meta) {
+              return formatRoomModalityValue("co2", data, " ppm");
+            }
           }
         ]
       });

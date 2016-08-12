@@ -68,3 +68,54 @@ input.filter-slider-value {
   background-size: 20px 20px;
   opacity: 0.2;
 }
+
+.room-list-modality-value {
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+  small {
+    color: $gray-light;
+  }
+
+  &.modality-temperature {
+    &.descriptor-cold p {
+      color: $gray-lighter;
+      background-color: #0000f0;
+    }
+    &.descriptor-typical p {
+      background-color: #00f000;
+    }
+    &.descriptor-warm p {
+      color: $gray-lighter;
+      background-color: #f00000;
+    }
+  }
+
+  &.modality-sound {
+    &.descriptor-quiet p {
+      background-color: #00f000;
+    }
+    &.descriptor-typical p {
+      background-color: #f0f000;
+    }
+    &.descriptor-noisy p {
+      color: $gray-lighter;
+      background-color: #f00000;
+    }
+  }
+
+  &.modality-co2 {
+    &.descriptor-fresh p {
+      background-color: #00f000;
+    }
+    &.descriptor-acceptable p {
+      background-color: #f0f000;
+    }
+    &.descriptor-stuffy p {
+      color: $gray-lighter;
+      background-color: #f00000;
+    }
+  }
+}
