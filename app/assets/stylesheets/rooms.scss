@@ -75,6 +75,15 @@ input.filter-slider-value {
   opacity: 0.2;
 }
 
+.room-list-room-info {
+  p {
+    margin: 0;
+  }
+  small {
+    color: $gray-light;
+  }
+}
+
 .room-list-modality-value {
   text-align: center;
 

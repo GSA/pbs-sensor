@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   has_many :readings
   belongs_to :building
+  belongs_to :room_type
 
   def update_averages
     valid_readings = readings.compact

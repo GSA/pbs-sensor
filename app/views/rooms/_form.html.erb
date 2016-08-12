@@ -1,8 +1,7 @@
 <%= form_for(room) do |f| %>
   <% if room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
-
+    <div class="alert alert-danger" role="alert">
+      <p><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</p>
       <ul>
       <% room.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,6 +11,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
@@ -19,6 +23,16 @@
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building %>
+    <%= collection_select(:room, :building_id, Building.all, :id, :name, include_blank: true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :room_type %>
+    <%= collection_select(:room, :room_type_id, RoomType.all, :id, :name, include_blank: true) %>
   </div>
 
   <div class="actions">

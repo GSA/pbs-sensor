@@ -80,15 +80,27 @@ PBS.rooms.index = function () {
   }
 
   /*
+   * Returns formatted HTML containing a room's basic info (name, building,
+   * room type).
+   */
+  function formatRoomInfo(roomData) {
+    var primary = roomData.name;
+    var secondary = "";
+    secondary = secondary + (roomData.building === null ? "" : roomData.building.name + " ");
+    secondary = secondary + (roomData.room_type === null ? "" : roomData.room_type.name);
+    var classes = "room-list-room-info";
+    return '<div class="' + classes + '"<p><a href="/rooms/' + roomData.id + '">' + primary + '</a></p><small>' + secondary + '</small></div>';
+  }
+
+  /*
    * Fetches filtered data via ajax. Loads the data into the room list table.
    */
   function loadData() {
     // DataTables column numbers
     var COL_ROOM_NUMBER = 0;
-    var COL_DESCRIPTION = 1;
-    var COL_AVERAGE_TEMPERATURE = 2;
-    var COL_AVERAGE_SOUND = 3;
-    var COL_AVERAGE_CO2 = 4;
+    var COL_AVERAGE_TEMPERATURE = 1;
+    var COL_AVERAGE_SOUND = 2;
+    var COL_AVERAGE_CO2 = 3;
 
     var filter_params = {
       min_temperature: toCelsius(parseFloat($("#filter-temp-min").val())),
@@ -105,7 +117,6 @@ PBS.rooms.index = function () {
         destroy: true,
         columns: [
           { data: "name" },
-          { data: "description" },
           { data: "average_temperature" },
           { data: "average_sound" },
           { data: "average_co2" }
@@ -115,12 +126,8 @@ PBS.rooms.index = function () {
             targets: [COL_ROOM_NUMBER],
             responsivePriority: 1,
             render: function (data, type, full, meta) {
-              return '<a href="/rooms/' + full.id + '">' + data + '</a>';
+              return formatRoomInfo(full);
             }
-          },
-          {
-            targets: [COL_DESCRIPTION],
-            responsivePriority: 3
           },
           {
             targets: [COL_AVERAGE_TEMPERATURE],
@@ -132,14 +139,14 @@ PBS.rooms.index = function () {
           },
           {
             targets: [COL_AVERAGE_SOUND],
-            responsivePriority: 2,
+            responsivePriority: 3,
             render: function (data, type, full, meta) {
               return formatRoomModalityValue("sound", data, " dB");
             }
           },
           {
             targets: [COL_AVERAGE_CO2],
-            responsivePriority: 2,
+            responsivePriority: 3,
             render: function (data, type, full, meta) {
               return formatRoomModalityValue("co2", data, " ppm");
             }
