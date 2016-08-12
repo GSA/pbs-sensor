@@ -204,7 +204,6 @@ PBS.rooms.index = function () {
       var $filterMinInput = $("#" + $(this).data("min-input-id"));
       var $filterMaxInput = $("#" + $(this).data("max-input-id"));
       var diff = $(this).data("max") - $(this).data("min");
-      console.log(diff);
       var step = 1;
       if (diff > 100) {
         step = 10;
@@ -212,7 +211,6 @@ PBS.rooms.index = function () {
       if (diff > 1000) {
         step = 100;
       }
-      console.log("step " + step);
       $(this).slider({
         step: step,
         range: true,
