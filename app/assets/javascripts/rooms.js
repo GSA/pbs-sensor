@@ -9,18 +9,18 @@ PBS.rooms.index = function () {
   var comfort_ranges = {
     "temperature": [
       [0, 67.9999, "cold"],
-      [68, 73.9999, "typical"],
-      [74, 99, "warm"]
+      [68, 74, "typical"],
+      [74.0001, 99, "warm"]
     ],
     "sound": [
       [0, 44.9999, "quiet"],
-      [45, 54.9999, "typical"],
-      [55, 99, "noisy"]
+      [45, 55, "typical"],
+      [55.0001, 99, "noisy"]
     ],
     "co2": [
       [0, 699.9999, "fresh"],
-      [700, 999.9999, "acceptable"],
-      [1000, 9999, "stuffy"]
+      [700, 1000, "acceptable"],
+      [1000.0001, 9999, "stuffy"]
     ]
   }
 
