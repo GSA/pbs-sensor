@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 RoomType.create([
+  {code: "unknown", name: "Unknown"},
   {code: "conference", name: "Conference Room"},
   {code: "open", name: "Open Workspace"},
   {code: "focus", name: "Focus Room"},
