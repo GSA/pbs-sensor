@@ -14,6 +14,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-datatables-rails', '~> 3.4'
 gem 'jquery-ui-rails', '~> 5.0'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
