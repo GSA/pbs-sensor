@@ -27,6 +27,11 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'rb-fsevent'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
