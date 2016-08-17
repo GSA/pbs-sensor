@@ -27,20 +27,20 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <p>
-              Noise level:
+              Sound level:
               <label for="filter-sound-min" class="sr-only">Min:</label>
               <input type="text" id="filter-sound-min" class="filter-slider-value">
               to
               <label for="filter-sound-max" class="sr-only">Max:</label>
               <input type="text" id="filter-sound-max" class="filter-slider-value">
               dB
-              <a tabindex="0" class="filter-info-button" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sound" data-content="Less than 45 dB is pretty quiet, 45-55 dB is a normal office environment, and beyond 55 dB the noise can be distracting."><span class="glyphicon glyphicon-info-sign"></span><span class="sr-only">Sound info</span></a>
+              <a tabindex="0" class="filter-info-button" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sound" data-content="Less than 45 dB is pretty quiet, 45-55 dB is a normal office environment, and beyond 55 dB the sound can be distracting."><span class="glyphicon glyphicon-info-sign"></span><span class="sr-only">Sound info</span></a>
             </p>
             <div id="slider-sound-range" class="filter-slider" data-min="40" data-max="70" data-min-input-id="filter-sound-min" data-max-input-id="filter-sound-max"></div>
             <div class="filter-range-labels">
               <small class="filter-range-label filter-range-label-min">Quiet</small>
               <small class="filter-range-label filter-range-label-mid">Typical</small>
-              <small class="filter-range-label filter-range-label-max">Noisy</small>
+              <small class="filter-range-label filter-range-label-max">Loud</small>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
             <tr>
               <th>Room</th>
               <th>Temperature</th>
-              <th>Noise Level</th>
+              <th>Sound Level</th>
               <th>Air Quality</th>
             </tr>
           </thead>

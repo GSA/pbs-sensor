@@ -15,7 +15,7 @@ PBS.rooms.index = function () {
     "sound": [
       [0, 44.9999, "quiet"],
       [45, 55, "typical"],
-      [55.0001, 99, "noisy"]
+      [55.0001, 99, "loud"]
     ],
     "co2": [
       [0, 699.9999, "fresh"],
