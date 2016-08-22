@@ -42,10 +42,14 @@ input.filter-slider-value {
   background: linear-gradient(to right, #0000f0 0%, #f00000 100%);
 }
 
-#slider-sound-range,
+#slider-sound-range {
+  background: $gray-lighter; // IE9
+  background: linear-gradient(to right, #d3d3d3 0%, #ffff00 100%);
+}
+
 #slider-co2-range {
   background: $gray-lighter; // IE9
-  background: linear-gradient(to right, #00f000 0%, #f0f000 60%, #f00000 100%);
+  background: linear-gradient(to right, #5544ff 0%, #d3d3d3 100%);
 }
 
 .filter-slider {
