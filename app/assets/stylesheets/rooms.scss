@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Color steps for filters and comfort indicators
+$temperature-min-color: #5544ff;
+$temperature-mid-color: #eeee88;
+$temperature-max-color: #ff3333;
+$sound-min-color: #d3d3d3;
+$sound-mid-color: #eeee88;
+$sound-max-color: #ffff00;
+$co2-min-color: #5544ff;
+$co2-mid-color: #9999ee;
+$co2-max-color: #d3d3d3;
+
 input.filter-slider-value {
   width: 3.5em;
   font-weight: bold;
@@ -39,17 +50,17 @@ input.filter-slider-value {
 
 #slider-temperature-range {
   background: $gray-lighter; // IE9
-  background: linear-gradient(to right, #0000f0 0%, #f00000 100%);
+  background: linear-gradient(to right, $temperature-min-color 0%, $temperature-max-color 100%);
 }
 
 #slider-sound-range {
   background: $gray-lighter; // IE9
-  background: linear-gradient(to right, #d3d3d3 0%, #ffff00 100%);
+  background: linear-gradient(to right, $sound-min-color 0%, $sound-max-color 100%);
 }
 
 #slider-co2-range {
   background: $gray-lighter; // IE9
-  background: linear-gradient(to right, #5544ff 0%, #d3d3d3 100%);
+  background: linear-gradient(to right, $co2-min-color 0%, $co2-max-color 100%);
 }
 
 .filter-slider {
@@ -101,40 +112,39 @@ input.filter-slider-value {
   &.modality-temperature {
     &.descriptor-cold p {
       color: $gray-lighter;
-      background-color: #0000f0;
+      background-color: $temperature-min-color;
     }
     &.descriptor-typical p {
-      background-color: #00f000;
+      background-color: $temperature-mid-color;
     }
     &.descriptor-warm p {
       color: $gray-lighter;
-      background-color: #f00000;
+      background-color: $temperature-max-color;
     }
   }
 
   &.modality-sound {
     &.descriptor-quiet p {
-      background-color: #00f000;
+      background-color: $sound-min-color;
     }
     &.descriptor-typical p {
-      background-color: #f0f000;
+      background-color: $sound-mid-color;
     }
     &.descriptor-loud p {
-      color: $gray-lighter;
-      background-color: #f00000;
+      background-color: $sound-max-color;
     }
   }
 
   &.modality-co2 {
     &.descriptor-fresh p {
-      background-color: #00f000;
+      color: $gray-lighter;
+      background-color: $co2-min-color;
     }
     &.descriptor-acceptable p {
-      background-color: #f0f000;
+      background-color: $co2-mid-color;
     }
     &.descriptor-stuffy p {
-      color: $gray-lighter;
-      background-color: #f00000;
+      background-color: $co2-max-color;
     }
   }
 }
