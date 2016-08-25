@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  time_zone: MyString
+  name: 1000
+  code: 1800f-1000-conference
+  description: A conference room at 1800F
 
 two:
-  name: MyString
-  description: MyString
-  time_zone: MyString
+  name: 2000
+  code: 1800f-2000-open
+  description: An open workspace at 1800F
