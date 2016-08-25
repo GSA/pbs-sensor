@@ -19,9 +19,9 @@ class RoomsController < ApplicationController
   end
 
   # GET /rooms/new
-  def new
-    @room = Room.new
-  end
+  # def new
+  #   @room = Room.new
+  # end
 
   # GET /rooms/1/edit
   def edit
@@ -59,13 +59,13 @@ class RoomsController < ApplicationController
 
   # DELETE /rooms/1
   # DELETE /rooms/1.json
-  def destroy
-    @room.destroy
-    respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @room.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
