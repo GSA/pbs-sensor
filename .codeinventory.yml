@@ -1,0 +1,11 @@
+name: 'PBS Sensor'
+description: 'Finds rooms based on building sensor data.'
+license: 'https://github.com/GSA/pbs-sensor/blob/master/LICENSE.md'
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - pbs
+    - federal-buildings
+    - iot
+contact:
+    email: cto@gsa.gov
